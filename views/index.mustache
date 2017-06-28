@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <title>Ice Cream Party To-Dos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/styles.css">
   </head>
   <body class="container">
     <h1>Ice Cream Party To-Do List</h1>
     <form class="form-group form-inline" action="/new" method="post">
       <input type="text" name="addnew" value="" placeholder="New to-do" class="form-control">
       <input type="text" name="assignee" value="" placeholder="Assignee?" class="form-control">
-      <input type="submit" name="add" value="Add it!" class="form-control btn btn-success">
+      <input type="submit" name="add" value="Add it!" class="form-control btn btn-info">
     </form>
 
 
@@ -19,7 +20,7 @@
     {{^completed}}
       <form class="form-group" action="/done" method="post">
         <input type="hidden" name="id" value="{{id}}">
-        <input type="submit" name="completed" value="Mark Completed" class="form-control btn btn-success">{{item}}: {{assignee}}
+        <input type="submit" name="completed" value="Mark Completed" class="form-control btn btn-info">{{item}}: {{assignee}}
       </form>
       {{/completed}}
       {{/todos}}
@@ -34,7 +35,7 @@
     {{/todos}}
 
     <form class="form-group" action="/delete" method="post">
-      <input type="submit" name="delete" value="Delete all Completed" class="form-control btn btn-success">
+      <input type="submit" name="delete" value="Delete all Completed" class="form-control btn btn-info">
     </form>
 
 
