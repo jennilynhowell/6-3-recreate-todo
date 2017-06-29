@@ -4,12 +4,11 @@ module.exports = function(sequelize, DataTypes) {
     item: DataTypes.STRING,
     completed: DataTypes.DATE,
     assignee: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+  }, {});
+
+  Todo.associate = function (models) {
+    Todo.belongsTo(models.User, {foreignKey: 'userId'});
+    User.belongsToMany(models.Todo, {through: 'UserTodos', foreignKey: 'todoId', otherKey: 'userId'});
+  }
   return Todo;
 };
