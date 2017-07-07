@@ -18,6 +18,10 @@ app.post('/new', controllers.new);
 
 app.post('/done', controllers.done);
 
-app.post('/delete', controllers.delete);
+app.post('/deleteall', controllers.delete);
+
+app.post('/deleteone', controllers.deleteOne);
+
+app.post('/edit', controllers.edit);
 
 app.listen(3000);

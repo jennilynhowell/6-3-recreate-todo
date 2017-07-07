@@ -36,8 +36,6 @@ module.exports = {
   },
 
   delete: function(req, res) {
-    let deleteCompleted = req.body.delete;
-
     models.Todo.destroy(
       {where: {completed:{$ne: null}}}
     ).then(function(){
@@ -45,5 +43,32 @@ module.exports = {
       res.render('index', {todos:todos})
     })
     })
-  }
+  },
+
+  deleteOne: function(req, res) {
+    let deleteone = req.body.deleteone;
+
+    models.Todo.destroy(
+      {where: {id: req.body.id}}
+    ).then(function(){
+      models.Todo.findAll({order: [['createdAt', 'DESC']]}).then(function(todos){
+      res.render('index', {todos:todos})
+    })
+    })
+  },
+
+  edit: function (req, res) {
+    let completeId = req.body.id;
+    let item = req.body.item;
+
+    models.Todo.update(
+      {item: item},
+      {where: {id: completeId}}
+    ).then(function(){
+      models.Todo.findAll({order: [['createdAt', 'DESC']]}).then(function(todos){
+      res.render('index', {todos:todos})
+    })
+    })
+  },
+
 }

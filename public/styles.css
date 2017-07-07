@@ -2,3 +2,37 @@ input[type="submit"] {
   width: 165px;
   margin-right: 10px;
 }
+
+.todo-item {
+  width: 60%;
+  padding: 1%;
+  border-bottom: 1px solid;
+}
+
+.todo-item:first-of-type {
+  border-top: 1px solid;
+}
+
+.edit-input {
+  width: 165px;
+}
+
+.edit-form, .delete-form {
+  display: inline;
+}
+
+.edit-form {
+  width: 60%;
+}
+
+.delete-form {
+  float: right;
+}
+
+.item {
+  display: inline;
+}
+
+.complete-btn {
+  float: right;
+}

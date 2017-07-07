@@ -18,10 +18,23 @@
     <h4>To do:</h4>
     {{#todos}}
     {{^completed}}
+    <div class="todo-item">
       <form class="form-group" action="/done" method="post">
+        <h3 class="item">{{item}}: {{assignee}}</h3>
         <input type="hidden" name="id" value="{{id}}">
-        <input type="submit" name="completed" value="Mark Completed" class="form-control btn btn-info">{{item}}: {{assignee}}
+        <input type="submit" name="completed" value="Mark Completed" class="form-control btn btn-success complete-btn">
       </form>
+      <form class="form-group form-inline edit-form" action="/edit" method="post">
+        <input type="hidden" name="id" value="{{id}}">
+        <input type="text" name="item" value="" placeholder="Edit item" class="form-control edit-input">
+        <input type="submit" name="edit" value="Edit this Item" class="form-control btn btn-info">
+      </form>
+      <form class="form-group delete-form" action="/deleteone" method="post">
+        <input type="hidden" name="id" value="{{id}}">
+        <input type="submit" name="deleteone" value="Delete this Item" class="form-control btn btn-warning">
+      </form>
+    </div>
+
       {{/completed}}
       {{/todos}}
 
@@ -34,8 +47,8 @@
     {{/completed}}
     {{/todos}}
 
-    <form class="form-group" action="/delete" method="post">
-      <input type="submit" name="delete" value="Delete all Completed" class="form-control btn btn-info">
+    <form class="form-group" action="/deleteall" method="post">
+      <input type="submit" name="deleteall" value="Delete all Completed" class="form-control btn btn-warning">
     </form>
 
 
